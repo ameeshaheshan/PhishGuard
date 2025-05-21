@@ -1,5 +1,4 @@
-# 🛡️ PhishGuard - Advanced Phishing Detector
-
+# 🛡️ PhishGuard - Phishing Detection Extension
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) ![Chrome Extension](https://img.shields.io/badge/chrome-extension-brightgreen) ![License](https://img.shields.io/badge/license-MIT-green)
 
 PhishGuard is a modern, feature-rich Chrome extension that protects you from phishing and malicious websites using real-time analysis, domain age verification, SSL checks, and more. Its beautiful UI and actionable insights help you browse with confidence.
