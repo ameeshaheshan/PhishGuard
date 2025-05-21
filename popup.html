@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhishGuard</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <img src="icons/icon48.png" alt="PhishGuard Logo" />
+          <span>PhishGuard</span>
+        </div>
+        <div class="nav-tabs">
+          <button id="tab-scan" class="active">Scan</button>
+          <button id="tab-settings">Settings</button>
+          <button id="tab-about">About</button>
+        </div>
+      </div>
+
+      <div id="scan-tab" class="tab-content active">
+        <div class="status-card">
+          <div id="security-status" class="status-icon safe">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path
+                d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"
+              />
+            </svg>
+          </div>
+          <div class="status-info">
+            <h2 id="status-title">Checking current page...</h2>
+            <p id="status-description">Analyzing security features...</p>
+          </div>
+        </div>
+
+        <div class="url-container">
+          <h3>Current URL</h3>
+          <div class="url-box">
+            <span id="current-url">Loading...</span>
+            <button id="scan-button" class="button primary">Scan Now</button>
+          </div>
+        </div>
+
+        <div class="scan-results">
+          <h3>Scan Results</h3>
+          <div id="results-container">
+            <div class="result-item">
+              <div class="result-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                >
+                  <path fill="none" d="M0 0h24v24H0z" />
+                  <path
+                    d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"
+                  />
+                </svg>
+              </div>
+              <div class="result-detail">Waiting for scan...</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="scanResult">
+          <div><strong>IP Address:</strong> <span id="ipAddress"></span></div>
+          <div>
+            <strong>Domain Age:</strong>
+            <span id="domainAge"></span>
+          </div>
+          <div>
+            <strong>Domain Creation Date:</strong>
+            <span id="domainCreationDate"></span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="report-button" class="button">Export Report</button>
+        </div>
+      </div>
+
+      <div id="settings-tab" class="tab-content">
+        <h3>Protection Settings</h3>
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>Real-time URL Scanning</h4>
+              <p>Automatically scan pages as you browse</p>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="enableRealTimeScanning" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>Blacklist Checking</h4>
+              <p>Check URLs against known phishing domains</p>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="enableBlacklistCheck" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>Heuristic Analysis</h4>
+              <p>Use AI to detect suspicious patterns</p>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="enableHeuristicCheck" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <h3>Custom Lists</h3>
+        <div class="list-manager">
+          <div class="list-tabs">
+            <button id="blacklist-tab" class="active">Blacklist</button>
+            <button id="whitelist-tab">Whitelist</button>
+          </div>
+
+          <div id="blacklist-content" class="list-content active">
+            <div class="list-input">
+              <input
+                type="text"
+                id="blacklist-input"
+                placeholder="Enter domain to blacklist"
+              />
+              <button id="add-blacklist" class="button">Add</button>
+            </div>
+            <div id="blacklist-items" class="list-items">
+              <!-- Blacklisted items will be added here -->
+            </div>
+          </div>
+
+          <div id="whitelist-content" class="list-content">
+            <div class="list-input">
+              <input
+                type="text"
+                id="whitelist-input"
+                placeholder="Enter domain to whitelist"
+              />
+              <button id="add-whitelist" class="button">Add</button>
+            </div>
+            <div id="whitelist-items" class="list-items">
+              <!-- Whitelisted items will be added here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="save-settings" class="button primary">
+            Save Settings
+          </button>
+          <button id="reset-settings" class="button">Reset to Default</button>
+        </div>
+      </div>
+
+      <div id="about-tab" class="tab-content">
+        <div class="about-content">
+          <h3>About PhishGuard</h3>
+          <p>
+            PhishGuard is an phishing detection extension that uses
+            multiple security checks to protect you from malicious websites.
+          </p>
+
+          <h4>Key Features</h4>
+          <ul>
+            <li>Real-time URL scanning and analysis</li>
+            <li>Domain age verification</li>
+            <li>SSL certificate validation</li>
+            <li>Phishing heuristics detection</li>
+            <li>Known phishing site blacklist</li>
+            <li>Custom blacklist and whitelist</li>
+          </ul>
+
+          <h4>How It Works</h4>
+          <p>
+            PhishGuard analyzes websites you visit for common phishing
+            indicators including:
+          </p>
+          <ul>
+            <li>Recently registered domains</li>
+            <li>Suspicious TLDs (.tk, .gq, etc.)</li>
+            <li>Missing or invalid SSL certificates</li>
+            <li>URLs containing IP addresses</li>
+            <li>Hidden form fields designed to steal credentials</li>
+            <li>Suspicious redirect chains</li>
+          </ul>
+
+          <div class="version-info">
+            <p>Version: 1.0.0</p>
+            <p>Dev By - Ameesha Heshan [Nova Exzzr]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
