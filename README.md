@@ -19,10 +19,10 @@ PhishGuard is a modern, feature-rich Chrome extension that protects you from phi
 ---
 
 ## 🖼️ Screenshots
-
-> ![PhishGuard UI Screenshot](icons/icon128.png)
-
----
+ <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 20px;">
+    <img src="icons/img1.png" alt="PhishGuard UI Screenshot" style="width: 300px; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+    <img src="icons/img2.png" alt="PhishGuard UI Screenshot" style="width: 300px; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+</div>
 
 ## 🛠️ Installation
 
